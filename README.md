@@ -11,4 +11,6 @@ by incorporating voting mechanisms with discussion tools.
 This allows to distinguish between agreed upon and controversial issues,
 and the process has a clear product: A text that reflects the consent of the participants.
 
-The consensus meter is an algorithm that determine the document Threshold: A number that represent how many supporters needed to approve a new suggestion. The threshold is always a percentage of the total sum of users in a document at given time.
+The consensus meter is an algorithm that determine the document Threshold: 
+A number that represent how many supporters needed to approve an edit suggestion to the document.
+The threshold is always a percentage of the total sum of users in a document at given time.
