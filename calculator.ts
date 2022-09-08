@@ -14,6 +14,11 @@ function calculateDocumentConsensus(sectionConsensuses: number[]) {
   return sectionConsensuses.reduce((a, b) => a + b, 0) / sectionConsensuses.length;
 }
 
-function calculateRequiredUpvotes(consensus: number, totalUsers: number) {
+/**
+ * Calculates the minimum difference between upvotes and downvotes for a vote to pass.
+ * @param consensus The consensus score of the document
+ * @param totalUsers total number of users who have interacted with the document
+ */
+function calculateMinimumDelta(consensus: number, totalUsers: number) {
   return consensus * totalUsers;
 }
