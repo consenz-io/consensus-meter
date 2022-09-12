@@ -19,11 +19,12 @@ function App() {
   const [documentUsers, setDocumentUsers] = React.useState(1);
   const [consensus, setConsensus] = React.useState(1);
   const [iterations, setIterations] = React.useState<Iteration[]>([{upvotes: 1, downvotes: 0, users: 1, consensus: 1, newThreshold: 1}]);
+  
   function addIteration():void {
     const newUsers = getRandomNumber(1, 10);
     const lastIteration = iterations[iterations.length - 1];
-    const upvotes = getRandomNumber(lastIteration.newThreshold, lastIteration.users + newUsers);
-    const downvotes = Math.floor(Math.random() * (newUsers - upvotes));
+    const upvotes = getRandomNumber(lastIteration.newThreshold, documentUsers + newUsers);
+    const downvotes = Math.floor(Math.random() * (documentUsers + newUsers - upvotes));
     const users = lastIteration.users + newUsers;
     const consensus = calculateSectionConsensus(upvotes, downvotes, users, 'approval');
     const newThreshold = Math.ceil(consensus * users);
@@ -31,6 +32,7 @@ function App() {
     setDocumentUsers(users);
     setConsensus(calculateDocumentConsensus([...iterations.map(i => i.consensus), consensus]));
   }
+  
   return (
     <ThemeProvider theme={createTheme({
       typography: {
