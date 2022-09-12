@@ -19,10 +19,6 @@ function getRandomNumber(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function pluralize(content: string) {
-  return content + (content.includes('1') ? '' : 's');
-}
-
 function App() {
   const [documentUsers, setDocumentUsers] = React.useState(1);
   const [consensus, setConsensus] = React.useState(1);
@@ -30,7 +26,7 @@ function App() {
   function addIteration():void {
     const newUsers = getRandomNumber(1, 10);
     const lastIteration = iterations[iterations.length - 1];
-    const upvotes = getRandomNumber(lastIteration.newThreshold, lastIteration.newThreshold + newUsers);
+    const upvotes = getRandomNumber(lastIteration.newThreshold, lastIteration.users + newUsers);
     const downvotes = Math.floor(Math.random() * (newUsers - upvotes));
     const users = lastIteration.users + newUsers;
     const consensus = calculateSectionConsensus(upvotes, downvotes, users, 'approval');
