@@ -1,10 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Alert, AlertTitle, Box, Button, Card, CardContent, CardHeader, Container, createTheme, IconButton, Stack, SvgIcon, ThemeProvider, Typography } from '@mui/material';
-import {ReactComponent as UpArrow} from './svg/up.svg'
-import {ReactComponent as DownArrow} from './svg/down.svg'
-import {ReactComponent as LeftChevron} from './svg/left.svg'
-import {ReactComponent as RightChevron} from './svg/right.svg'
 import { calculateDocumentConsensus, calculateSectionConsensus } from './calculator';
 
 interface Iteration {
