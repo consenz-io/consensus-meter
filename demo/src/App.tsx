@@ -22,9 +22,10 @@ function App() {
   
   function addIteration():void {
     const lastIteration = iterations[iterations.length - 1];
-    const upvotes = getRandomNumber(lastIteration.newThreshold, documentUsers + getRandomNumber(1, 10));
-    const downvotes = upvotes - lastIteration.newThreshold;
-    const users = Math.max(lastIteration.users + getRandomNumber(0,10), upvotes + downvotes);
+    const newUsers = getRandomNumber(0, 10);
+    const users = lastIteration.users + newUsers;
+    const downvotes = getRandomNumber(0, (users - lastIteration.newThreshold) / 2);
+    const upvotes = lastIteration.newThreshold + downvotes;
     const sectionConsensus = calculateSectionConsensus(upvotes, downvotes, users, 'approval');
     const documentConsensus = calculateDocumentConsensus([...iterations.map(i => i.consensus), sectionConsensus])
     const newThreshold = Math.ceil(documentConsensus * users);
