@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Alert, AlertTitle, Box, Button, Card, CardContent, CardHeader, Container, createTheme, IconButton, Stack, SvgIcon, ThemeProvider, Typography } from '@mui/material';
+import { Alert, AlertTitle, Box, Button, Card, CardContent, CardHeader, Container, createTheme, Stack, ThemeProvider, Typography } from '@mui/material';
 import { calculateDocumentConsensus, calculateSectionConsensus } from './calculator';
 
 interface Iteration {
@@ -21,16 +21,16 @@ function App() {
   const [iterations, setIterations] = React.useState<Iteration[]>([{upvotes: 1, downvotes: 0, users: 1, consensus: 1, newThreshold: 1}]);
   
   function addIteration():void {
-    const newUsers = getRandomNumber(1, 10);
     const lastIteration = iterations[iterations.length - 1];
-    const upvotes = getRandomNumber(lastIteration.newThreshold, documentUsers + newUsers);
-    const downvotes = Math.floor(Math.random() * (documentUsers + newUsers - upvotes));
-    const users = lastIteration.users + newUsers;
-    const consensus = calculateSectionConsensus(upvotes, downvotes, users, 'approval');
-    const newThreshold = Math.ceil(consensus * users);
-    setIterations([...iterations, {upvotes, downvotes, users, consensus,newThreshold }]);
+    const upvotes = getRandomNumber(lastIteration.newThreshold, documentUsers + getRandomNumber(1, 10));
+    const downvotes = upvotes - lastIteration.newThreshold;
+    const users = Math.max(lastIteration.users + getRandomNumber(0,10), upvotes + downvotes);
+    const sectionConsensus = calculateSectionConsensus(upvotes, downvotes, users, 'approval');
+    const documentConsensus = calculateDocumentConsensus([...iterations.map(i => i.consensus), sectionConsensus])
+    const newThreshold = Math.ceil(documentConsensus * users);
+    setIterations([...iterations, {upvotes, downvotes, users, consensus: sectionConsensus,newThreshold }]);
     setDocumentUsers(users);
-    setConsensus(calculateDocumentConsensus([...iterations.map(i => i.consensus), consensus]));
+    setConsensus(calculateDocumentConsensus([...iterations.map(i => i.consensus), sectionConsensus]));
   }
   
   return (
@@ -65,6 +65,7 @@ function App() {
               <Typography variant="subtitle1" color="success.main">{iteration.upvotes} upvotes</Typography>
               <Typography variant="subtitle1" color="error.main">{iteration.downvotes} downvotes</Typography>
               <Typography variant="subtitle1" color="primary.main">Consensus: {iteration.consensus}</Typography>
+              <Typography variant="subtitle1" color="primary.seconday">New Threshold: {iteration.newThreshold}</Typography>
             </CardContent>
           </Card>
           ))}
