@@ -16,11 +16,11 @@ function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-const RotatingIcon = styled(SvgIcon)({
+const RotatingIcon = styled(IconButton)({
   '&:hover': {
     'transition': '0.5s',
-    transform: 'rotate(90deg)'
   },
+  transform: 'rotate(90deg)'
 });
 
 function App() {
@@ -59,7 +59,7 @@ function App() {
         borderRadius: 16
       }
     })}>
-    <IconButton sx={{position: 'absolute', margin: 1}} onClick={() => setSettings(true)}><RotatingIcon><Cog/></RotatingIcon></IconButton>
+    <RotatingIcon sx={{position: 'absolute', margin: 1}} onClick={() => setSettings(true)}><SvgIcon><Cog/></SvgIcon></RotatingIcon>
     <Dialog open={settings} onClose={() => setSettings(false)}>
       <Card>
         <CardContent>
