@@ -18,9 +18,9 @@ function getRandomInt(min: number, max: number): number {
 
 const RotatingIcon = styled(IconButton)({
   '&:hover': {
-    'transition': '0.5s',
+    transform: 'rotate(90deg)'
   },
-  transform: 'rotate(90deg)'
+  'transition': '0.5s',
 });
 
 function App() {
