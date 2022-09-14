@@ -30,7 +30,7 @@ function App() {
   const [settings, setSettings] = React.useState(false);
   const [newUsersLimit, setNewUsersLimit] = React.useState(10);
   
-  function addIteration():void {
+  function addIteration(): void {
     const lastIteration = iterations[iterations.length - 1];
     const newUsers = getRandomInt(0, newUsersLimit);
     const users = lastIteration.users + newUsers;
