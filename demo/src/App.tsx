@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import { Alert, AlertTitle, Box, Button, Card, CardContent, CardHeader, Container, createTheme, Stack, ThemeProvider, Typography } from '@mui/material';
+import { Alert, AlertTitle, Box, Button, Card, CardContent, CardHeader, Container, createTheme, Dialog, Fab, IconButton, Stack, styled, SvgIcon, TextField, ThemeProvider, Typography } from '@mui/material';
 import { calculateDocumentConsensus, calculateSectionConsensus } from './calculator';
+import {ReactComponent as Cog} from './svg/cog.svg'
 
 interface Iteration {
   upvotes: number;
@@ -11,21 +12,30 @@ interface Iteration {
   newThreshold: number;
 }
 
-function getRandomNumber(min: number, max: number): number {
+function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min) + min);
 }
+
+const RotatingIcon = styled(SvgIcon)({
+  '&:hover': {
+    'transition': '0.5s',
+    transform: 'rotate(90deg)'
+  },
+});
 
 function App() {
   const [documentUsers, setDocumentUsers] = React.useState(1);
   const [consensus, setConsensus] = React.useState(1);
   const [iterations, setIterations] = React.useState<Iteration[]>([{upvotes: 1, downvotes: 0, users: 1, consensus: 1, newThreshold: 1}]);
+  const [settings, setSettings] = React.useState(false);
+  const [newUsersLimit, setNewUsersLimit] = React.useState(10);
   
   function addIteration():void {
     const lastIteration = iterations[iterations.length - 1];
-    const newUsers = getRandomNumber(0, 10);
+    const newUsers = getRandomInt(0, newUsersLimit);
     const users = lastIteration.users + newUsers;
-    const downvotes = getRandomNumber(0, (users - lastIteration.newThreshold) / 2);
-    const upvotes = lastIteration.newThreshold + downvotes;
+    const downvotes = getRandomInt(0, (users - lastIteration.newThreshold) / 2);
+    const upvotes = getRandomInt(lastIteration.newThreshold + downvotes, users - downvotes);
     const sectionConsensus = calculateSectionConsensus(upvotes, downvotes, users, 'approval');
     const documentConsensus = calculateDocumentConsensus([...iterations.map(i => i.consensus), sectionConsensus])
     const newThreshold = Math.ceil(documentConsensus * users);
@@ -49,6 +59,14 @@ function App() {
         borderRadius: 16
       }
     })}>
+    <IconButton sx={{position: 'absolute', margin: 1}} onClick={() => setSettings(true)}><RotatingIcon><Cog/></RotatingIcon></IconButton>
+    <Dialog open={settings} onClose={() => setSettings(false)}>
+      <Card>
+        <CardContent>
+          <TextField label="New users per iteration limit" type="number" value={newUsersLimit} onChange={(v) => setNewUsersLimit(+v.target.value)}/>
+        </CardContent>
+      </Card>
+    </Dialog>
     <Container sx={{paddingY: 8,height:'100vh'}}>
     <Stack alignContent="center" justifyContent="center" spacing={4}>
       <Alert severity="info">

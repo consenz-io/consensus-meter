@@ -1,8 +1,8 @@
 export function calculateSectionConsensus(upvotes: number, downvotes: number, totalUsers: number, type: 'approval' | 'removal') {
   if (type === 'approval') {
-  return (1 - downvotes / upvotes) * upvotes / totalUsers;
+  return (upvotes - downvotes) / totalUsers;
   }
-  return (1 - upvotes / downvotes) * downvotes / totalUsers;
+  return (downvotes - upvotes) / totalUsers;
 }
 
 /**
