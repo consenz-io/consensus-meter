@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Alert, AlertTitle, Box, Button, Card, CardContent, CardHeader, Container, createTheme, Dialog, Fab, IconButton, Stack, styled, SvgIcon, TextField, ThemeProvider, Typography } from '@mui/material';
+import { Alert, AlertTitle, Box, Button, Card, CardContent, CardHeader, Container, createTheme, Dialog, DialogContent, IconButton, Stack, styled, SvgIcon, TextField, ThemeProvider, Typography } from '@mui/material';
 import { calculateDocumentConsensus, calculateSectionConsensus } from './calculator';
 import {ReactComponent as Cog} from './svg/cog.svg'
 
@@ -61,11 +61,9 @@ function App() {
     })}>
     <RotatingIcon sx={{position: 'absolute', margin: 1}} onClick={() => setSettings(true)}><SvgIcon><Cog/></SvgIcon></RotatingIcon>
     <Dialog open={settings} onClose={() => setSettings(false)}>
-      <Card>
-        <CardContent>
-          <TextField label="New users per iteration limit" type="number" value={newUsersLimit} onChange={(v) => setNewUsersLimit(+v.target.value)}/>
-        </CardContent>
-      </Card>
+      <DialogContent>
+        <TextField label="New users per iteration limit" type="number" value={newUsersLimit} onChange={(v) => setNewUsersLimit(+v.target.value)}/>
+      </DialogContent>
     </Dialog>
     <Container sx={{paddingY: 8,height:'100vh'}}>
     <Stack alignContent="center" justifyContent="center" spacing={4}>
