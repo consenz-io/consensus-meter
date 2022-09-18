@@ -95,8 +95,8 @@ function App() {
     <Dialog open={isChartVisible} onClose={() => setIsChartVisible(false)} maxWidth="md" fullWidth>
       <DialogContent>
         <Line data={{labels:iterations.map((o, i) => i), datasets:[
-            {data:iterations.map(i => i.documentConsensus), label: "DocumentConsensus", borderColor: "hsl(100, 50%, 50%)"},
-            {data:iterations.map(i => i.consensus),label:"Section Consensus", borderColor: "hsl(200, 50%, 50%)"},
+            {data:iterations.map(i => i.consensus),label:"Iteration Consensus", borderColor: "hsl(200, 50%, 50%)"},
+            {data:iterations.map(i => i.documentConsensus), label: "Document Consensus", borderColor: "hsl(100, 50%, 50%)"},
           ]}} />
       </DialogContent>
     </Dialog>
