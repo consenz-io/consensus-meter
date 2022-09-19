@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
-import { Alert, AlertTitle, Button, Card, CardContent, CardHeader, Container, createTheme, Dialog, DialogContent, IconButton, Stack, styled, SvgIcon, TextField, ThemeProvider, Typography } from '@mui/material';
+import { Alert, AlertTitle, Button, Card, CardContent, CardHeader, Container, createTheme, Dialog, DialogActions, DialogContent, IconButton, Stack, styled, SvgIcon, TextField, ThemeProvider, Typography } from '@mui/material';
 import { calculateDocumentConsensus, calculateSectionConsensus } from './calculator';
 import {ReactComponent as Cog} from './svg/cog.svg'
 import {ReactComponent as Chart} from './svg/chart.svg'
@@ -47,12 +47,27 @@ ChartJS.register(
 );
 
 function App() {
+  const [initialThreshold, setInitialThreshold] = React.useState(1);
   const [isChartVisible, setIsChartVisible] = React.useState(false);
   const [documentUsers, setDocumentUsers] = React.useState(1);
   const [consensus, setConsensus] = React.useState(1);
   const [iterations, setIterations] = React.useState<Iteration[]>([{upvotes: 1, downvotes: 0, users: 1, consensus: 1, newThreshold: 1, documentConsensus: 1}]);
   const [settings, setSettings] = React.useState(false);
   const [newUsersLimit, setNewUsersLimit] = React.useState(10);
+
+  useEffect(() => 
+    setIterations([
+      {
+        upvotes: initialThreshold, 
+        downvotes: 0, 
+        users: initialThreshold, 
+        consensus: 1, 
+        newThreshold: initialThreshold, 
+        documentConsensus: 1
+      }
+    ]), 
+    [initialThreshold]
+  );
 
   function addIteration(): void {
     const lastIteration = iterations[iterations.length - 1];
@@ -89,8 +104,14 @@ function App() {
     </Stack>
     <Dialog open={settings} onClose={() => setSettings(false)}>
       <DialogContent>
-        <TextField label="New users per iteration limit" type="number" value={newUsersLimit} onChange={(v) => setNewUsersLimit(+v.target.value)}/>
+        <Stack spacing={2}>
+          <TextField label="New users per iteration limit" type="number" value={newUsersLimit} onChange={(v) => setNewUsersLimit(+v.target.value)}/>
+          <TextField label="Initial Threshold" type="number" value={initialThreshold} onChange={(v) => setInitialThreshold(+v.target.value)}/>
+        </Stack>
       </DialogContent>
+      <DialogActions>
+        <Button onClick={() => setSettings(false)}>Done</Button>
+      </DialogActions>
     </Dialog>
     <Dialog open={isChartVisible} onClose={() => setIsChartVisible(false)} maxWidth="md" fullWidth>
       <DialogContent>
