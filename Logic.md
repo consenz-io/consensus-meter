@@ -4,7 +4,7 @@ Every time thet an edit suggestion is accepted and enter the agreement, a new se
 The value of the sectionConsensus is calculated according to votes count on the section that have been accepted or removed as follows:
 
 For section accepted:
-- new consensuses item = (1 - (downvotes count /  upvotes count)) * (upvotes count) / totalUsers count)
+- new consensuses item = (upvotes - downvotes) / totalUsers
 
 Every time a new sectionConsensus is created, document_consensus_meter is updated. 
 The value of the new document_consensus_meter is calculated according to all section_consensus_meter average.
@@ -22,7 +22,7 @@ document updated threshold will apply on all sections that are up to vote, and o
 - consensusMeterAverage: sum of all sections_consenus_meter / sections of status 1 + 5 count
 
      
-    sectionConsensus = (1 - (x.upvotes / x.downvotes)) * ((x.downvotes) / totalUsers)
+    sectionConsensus = (upvotes - downvotes) / totalUsers
       Add sectionConsensus to consensusesArray
       Add sectionConsensus to consensusMeterAverage
     
