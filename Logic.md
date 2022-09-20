@@ -19,7 +19,7 @@ document updated threshold will apply on all sections that are up to vote, and o
 - x: the removed/acceppted section
 - sectionDocumentId: the id of the [document](./README.md/#document_definition) the removed section relates to
 - totalUsers: the document users count
-- consensusMeterAverage: sum of all sections_consenus_meter / sections of status 1 + 5 count
+- consensusMeterAverage: sum of all sections_consenus_meter / approved sections count
 
      
     sectionConsensus = (upvotes - downvotes) / totalUsers
