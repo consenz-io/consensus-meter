@@ -1,3 +1,5 @@
+For project setup see [README](https://github.com/consenz-io/consensus-meter/edit/main/demo/README.md)
+
 Consenz is a platform for creating agreements.
 The platform lets a group of people create a document that reflects the issues they agree upon
 and discuss the issues that are in disagreement.
