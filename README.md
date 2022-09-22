@@ -8,17 +8,8 @@ Consenz is a platform for creating agreements.
 The platform lets a group of people create a document that reflects the issues they agree upon
 and discuss the issues that are in disagreement.
 
-The platform allows any group of people at any scale to formulate a text
-in a single, coherent and clear document in a transparent and democratic way.
-The platform enable it through a new kind of Internet discussion.
-Instead of spreading across countless responses,
-the discussion converges around a collaborative and democratic document
-by incorporating voting mechanisms with discussion tools.
-This allows to distinguish between agreed upon and controversial issues,
-and the process has a clear product: A text that reflects the consent of the participants.
-
-The consensus meter is an algorithm that determine the document Threshold: 
-A number that represent how many supporters needed to approve an edit suggestion to the document.
+The consensus meter is an algorithm that determine an agreement threshold: 
+A number that represent how many supporters needed to approve an edit suggestion to an agreement document.
 The threshold is always a percentage of the total sum of users in a document at given time.
 For this project we have created a simulation of the consensus meter to demonstrate it's behavior at a scale and to set a base for future improvements and optimization.
 
@@ -33,7 +24,15 @@ This situation makes the decision-making process ineffective and creates a risk 
 
 ### Our Solution:
 
-Consenz is a platform that was created to address those problems and offer a proven solution.
+Consenz is a platform that was created to address those problems and offer a proven solution. 
+The platform allows any group of people at any scale to formulate a text
+in a single, coherent and clear document in a transparent and democratic way.
+The platform enable it through a new kind of Internet discussion.
+Instead of spreading across countless responses,
+the discussion converges around a collaborative and democratic document
+by incorporating voting mechanisms with discussion tools.
+This allows to distinguish between agreed upon and controversial issues,
+and the process has a clear product: A text that reflects the consent of the participants.
 
 The following discussion-features make Consenz unique, compared to other platforms:
 
