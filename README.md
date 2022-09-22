@@ -2,7 +2,7 @@
 ## Project Name
 Consensus Meter Simulation
 ## Team Name
-Consenz
+Consenz Team - Aharon Porath, Aviran Katz, Omer Tzuk
 ## Short description 
 Consenz is a platform for creating agreements.
 The platform lets a group of people create a document that reflects the issues they agree upon
