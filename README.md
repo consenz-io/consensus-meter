@@ -53,7 +53,7 @@ The process on consenz creates a "micro-democracy" system - an option to discuss
 ## Website link
 https://consenz.io
 ## Contracts
-Still in research. We plan to use [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/governance) Solidity libraries to creat the smart contracts needed for consenz voting on-chain.
+Still in research. We plan to use [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/governance) Solidity libraries to creat the smart contracts needed for consenz voting on-chain deployment on Milkomeda C1. 
 ## Frontend code
 https://github.com/consenz-io/webapp
 ## Screens / graphic materials
