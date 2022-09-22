@@ -21,7 +21,7 @@ You can watch and interact with consenz web app demo using this link - https://w
 
 You can watch and interact with the consensus meter simulation using this link - https://simulation.consenz.io/
 # Tech Stack
-> ℹ️ The information below refers to the [main app](https://github.com/consenz-io/webapp). The simulation impleneted in this hackathon only uses a react frontend, for the purpose of demonstrating the consensus meter. 
+> The information below refers to the [main app](https://github.com/consenz-io/webapp). The simulation impleneted in this hackathon only uses a react frontend, for the purpose of demonstrating the consensus meter. 
 
 ## Backend
 We are using PostgreSQL as our DB, [hasura](https://hasura.io) as our graphql API gateway. For the POC votes are saved in the database, but in the upcoming months we are going to implement on-chain voting (C1). We would use [Cardano DB Sync](https://docs.cardano.org/cardano-components/cardano-db-sync/about-db-sync) for synchronization between the blockchain and our DB.
