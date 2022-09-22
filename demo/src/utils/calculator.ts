@@ -15,10 +15,10 @@ export function calculateDocumentConsensus(sectionConsensuses: number[]) {
 }
 
 /**
- * Calculates the minimum difference between upvotes and downvotes for a vote to pass.
+ * Calculates the minimum difference between upvotes and downvotes required for a vote to pass.
  * @param consensus The consensus score of the document
  * @param totalUsers total number of users who have interacted with the document
  */
-export function calculateMinimumDelta(consensus: number, totalUsers: number) {
+export function calculateNewThreshold(consensus: number, totalUsers: number) {
   return consensus * totalUsers;
 }

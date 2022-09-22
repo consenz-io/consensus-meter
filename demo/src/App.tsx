@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { Alert, AlertTitle, Button, Card, CardContent, CardHeader, Container, createTheme, Dialog, DialogActions, DialogContent, IconButton, Stack, styled, SvgIcon, TextField, ThemeProvider, Typography } from '@mui/material';
-import { calculateDocumentConsensus, calculateSectionConsensus } from './calculator';
+import { calculateDocumentConsensus, calculateNewThreshold, calculateSectionConsensus } from './utils/calculator';
 import {ReactComponent as Cog} from './svg/cog.svg'
 import {ReactComponent as Chart} from './svg/chart.svg'
 import {
@@ -15,6 +15,7 @@ import {
   Legend,
 } from 'chart.js';
 import {Line} from 'react-chartjs-2'
+import { getRandomInt } from './utils/functions';
 
 interface Iteration {
   upvotes: number;
@@ -23,10 +24,6 @@ interface Iteration {
   consensus: number;
   newThreshold: number;
   documentConsensus: number;
-}
-
-function getRandomInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min) + min);
 }
 
 const RotatingIcon = styled(IconButton)({
@@ -55,6 +52,7 @@ function App() {
   const [settings, setSettings] = React.useState(false);
   const [newUsersLimit, setNewUsersLimit] = React.useState(10);
 
+  // reset iterations when initial threshold changes
   useEffect(() => 
     setIterations([
       {
@@ -69,6 +67,10 @@ function App() {
     [initialThreshold]
   );
 
+  /**
+   * Calculates the consensus for the next iteration, then add it to the list of iterations
+   * Update the document consensus as well
+   */
   function addIteration(): void {
     const lastIteration = iterations[iterations.length - 1];
     const newUsers = getRandomInt(0, newUsersLimit);
@@ -77,7 +79,7 @@ function App() {
     const upvotes = getRandomInt(lastIteration.newThreshold + downvotes, users - downvotes);
     const sectionConsensus = calculateSectionConsensus(upvotes, downvotes, users, 'approval');
     const documentConsensus = calculateDocumentConsensus([...iterations.map(i => i.consensus), sectionConsensus])
-    const newThreshold = Math.ceil(documentConsensus * users);
+    const newThreshold = calculateNewThreshold(documentConsensus, users);
     setIterations([...iterations, {upvotes, downvotes, users, consensus: sectionConsensus,newThreshold, documentConsensus }]);
     setDocumentUsers(users);
     setConsensus(calculateDocumentConsensus([...iterations.map(i => i.consensus), sectionConsensus]));
