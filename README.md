@@ -58,9 +58,9 @@ Still in research. We plan to use [OpenZeppelin](https://docs.openzeppelin.com/c
 https://github.com/consenz-io/webapp
 ## Screens / graphic materials
 
-You can watch and interact with consenz web app demo using this [link](https://www.figma.com/proto/lBVtIWr5UDhJXFXgJWgO8j/Consenz-Wireframe-(Copy)?node-id=1702%3A9054&scaling=scale-down-width&page-id=1702%3A9053&starting-point-node-id=1702%3A9054)
+- You can watch and interact with consenz web app demo using this [Figma prototype](https://www.figma.com/proto/lBVtIWr5UDhJXFXgJWgO8j/Consenz-Wireframe-(Copy)?node-id=1702%3A9054&scaling=scale-down-width&page-id=1702%3A9053&starting-point-node-id=1702%3A9054)
 
-You can watch and interact with the consensus meter simulation using this link - https://simulation.consenz.io/
+- You can watch and interact with the consensus meter simulation [here](https://simulation.consenz.io/)
 # Tech Stack
 > The information below refers to the [main app](https://github.com/consenz-io/webapp). The simulation impleneted in this hackathon only uses a react frontend, for the purpose of demonstrating the consensus meter. 
 
