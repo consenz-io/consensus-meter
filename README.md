@@ -62,7 +62,8 @@ https://github.com/consenz-io/webapp
 - You can watch and interact with the consensus meter simulation [here](https://simulation.consenz.io/)
 
 ## Recorded pitch 
-- https://drive.google.com/file/d/11rnIwc5q9TIHCZhZAriDRmxPfco4MQbX/view?usp=sharing
+- Video: https://drive.google.com/file/d/11rnIwc5q9TIHCZhZAriDRmxPfco4MQbX/view?usp=sharing
+- Slides: https://docs.google.com/presentation/d/1bsAR_DmS9vCMm5vstFrolt8SY_SgX7cFXWNbcGBUHE0/edit?usp=sharing
 
 # Tech Stack
 > The information below refers to the [main app](https://github.com/consenz-io/webapp). The simulation impleneted in this hackathon only uses a react frontend, for the purpose of demonstrating the consensus meter. 
