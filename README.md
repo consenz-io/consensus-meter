@@ -60,6 +60,10 @@ https://github.com/consenz-io/webapp
 - You can watch and interact with consenz web app demo using this [Figma prototype](https://www.figma.com/proto/lBVtIWr5UDhJXFXgJWgO8j/Consenz-Wireframe-(Copy)?node-id=1702%3A9054&scaling=scale-down-width&page-id=1702%3A9053&starting-point-node-id=1702%3A9054)
 
 - You can watch and interact with the consensus meter simulation [here](https://simulation.consenz.io/)
+
+## Recorded pitch 
+- https://drive.google.com/file/d/11rnIwc5q9TIHCZhZAriDRmxPfco4MQbX/view?usp=sharing
+
 # Tech Stack
 > The information below refers to the [main app](https://github.com/consenz-io/webapp). The simulation impleneted in this hackathon only uses a react frontend, for the purpose of demonstrating the consensus meter. 
 
