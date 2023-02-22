@@ -46,9 +46,6 @@ You can read more about the consensus meter algorithm logic [here](https://githu
 
 The process on consenz creates a "micro-democracy" system - an option to discuss the details of a proposal by all members of the DAOs community without limiting it to a small group of representatives. Consenz combines elements of - and is inspired by - liquid democracy, direct democracy, deliberative democracy and sociocracy.
 
-## Payment Address (USDC on Milkomeda)
-0x02Bde23d0338E9DdC2412d902CB3E213B6dee8Ed
-
 ## Website link
 https://consenz.io
 ## Contracts
